@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+  }
+  
+  body {
+    background-color: #faf9f7;
+    color: #1a1c1b;
+    font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f4f3f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #d0c4be;
+    border-radius: 0px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C09B66;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hairline joinery borders */
+.architectural-border {
+  border: 1px solid #E6E0D6;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.architectural-border:hover {
+  border-color: #C09B66;
+}
+
+/* Material Swatch Shadow */
+.swatch-active {
+  border: 2px solid #C09B66 !important;
+  box-shadow: 0 0 0 2px rgba(192, 155, 102, 0.2);
+}
