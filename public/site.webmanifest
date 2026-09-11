@@ -1,0 +1,23 @@
+{
+  "name": "لمسة إعمار للترميم والديكور بالدمام والخبر",
+  "short_name": "لمسة إعمار",
+  "description": "استوديو عمارة وتنفيذ متخصص في أعمال الترميم الإنشائي والديكور الداخلي وتكسيات بديل الخشب والرخام بالدمام والخبر والشرقية.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B192C",
+  "theme_color": "#C5A880",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

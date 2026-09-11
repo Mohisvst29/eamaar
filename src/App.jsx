@@ -16,6 +16,7 @@ import DashboardPage from './pages/DashboardPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 
 import { useAdminStore } from './store/useAdminStore';
+import { updateSEOForPath } from './utils/seo';
 
 export default function App() {
   const { isAuthenticated, logout } = useAdminStore();
@@ -39,6 +40,10 @@ export default function App() {
     window.location.hash = path;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    updateSEOForPath(currentPath);
+  }, [currentPath]);
 
   useEffect(() => {
     const handleHashChange = () => {
