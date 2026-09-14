@@ -2,31 +2,34 @@ export function injectGoogleAdsScript(googleAdsLinkOrId, siteVerificationCode) {
   if (typeof window === 'undefined') return;
 
   if (googleAdsLinkOrId) {
-    const existingScript = document.getElementById('google-ads-script');
-    if (!existingScript) {
-      let tagId = googleAdsLinkOrId.trim();
-      const match = tagId.match(/(AW-[0-9]+|G-[A-Z0-9]+|GTM-[A-Z0-9]+)/i);
-      if (match) {
-        tagId = match[0];
-      }
+    let tagId = googleAdsLinkOrId.trim();
+    const match = tagId.match(/(AW-[0-9]+|G-[A-Z0-9]+|GTM-[A-Z0-9]+)/i);
+    if (match) {
+      tagId = match[0];
+    }
 
-      if (tagId.startsWith('AW-') || tagId.startsWith('G-')) {
-        const script1 = document.createElement('script');
+    if (tagId.startsWith('AW-') || tagId.startsWith('G-')) {
+      let script1 = document.getElementById('google-ads-script');
+      if (!script1) {
+        script1 = document.createElement('script');
         script1.id = 'google-ads-script';
         script1.async = true;
-        script1.src = `https://www.googletagmanager.com/gtag/js?id=${tagId}`;
         document.head.appendChild(script1);
+      }
+      script1.src = `https://www.googletagmanager.com/gtag/js?id=${tagId}`;
 
-        const script2 = document.createElement('script');
+      let script2 = document.getElementById('google-ads-init');
+      if (!script2) {
+        script2 = document.createElement('script');
         script2.id = 'google-ads-init';
-        script2.innerHTML = `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${tagId}');
-        `;
         document.head.appendChild(script2);
       }
+      script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${tagId}');
+      `;
     }
   }
 
@@ -40,3 +43,10 @@ export function injectGoogleAdsScript(googleAdsLinkOrId, siteVerificationCode) {
     existingMeta.content = siteVerificationCode.trim();
   }
 }
+
+export function trackGoogleAdsEvent(eventName, params = {}) {
+  if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params);
+  }
+}
+

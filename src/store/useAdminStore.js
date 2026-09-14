@@ -181,7 +181,7 @@ const INITIAL_SOCIAL = {
   snapchat: 'https://snapchat.com',
   location: 'الخبر - الثقبة، شارع مكة المكرمة',
   mongodbUri: 'mongodb+srv://<db_username>:Tj8wCWWcpUDGRz8x@cluster0.qmgt7kg.mongodb.net/?appName=Cluster0',
-  googleAdsLink: 'AW-1092837465',
+  googleAdsLink: 'AW-18444819668',
   googleSiteVerification: 'google-site-verification-lamsat-emaar'
 };
 
