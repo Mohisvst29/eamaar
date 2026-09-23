@@ -25,6 +25,9 @@ export function formatWhatsAppUrl(customText, overrideNum) {
 }
 
 export function openWhatsApp(customText, overrideNum) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', {'send_to': 'AW-18444819668/EELnCMP92_ccENS5lttE'});
+  }
   const url = formatWhatsAppUrl(customText, overrideNum);
   window.open(url, '_blank', 'noopener,noreferrer');
 }
